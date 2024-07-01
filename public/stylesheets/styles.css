@@ -1,0 +1,384 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #ffffff;
+    color: #000000;
+    font-family: "Montserrat", sans-serif;
+}
+.sidebar-brand {
+    font-size: 1.5em;
+}
+.material-icons-outlined {
+    vertical-align: middle;
+    line-height: 1px;
+    font-size: 35px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 260px 1fr 1fr 1fr;
+    grid-template-rows: 0.2fr 3fr;
+    grid-template-areas:
+        "sidebar header header header"
+        "sidebar main main main";
+    height: 100vh;
+}
+
+/* ---------- HEADER ---------- */
+.header {
+    grid-area: header;
+    height: 3em;
+    display: flex;
+    align-items: center;
+
+    justify-content: space-between;
+    padding: 0 30px 0 30px;
+    box-shadow: 0 6px 7px -3px rgba(0, 0, 0, 0.35);
+}
+.header-right {
+    margin-left: auto;
+}
+
+.menu-icon {
+    display: none;
+    margin-right: auto;
+}
+
+/* ---------- SIDEBAR ---------- */
+
+#sidebar {
+    grid-area: sidebar;
+    height: 100%;
+    background-color: #1e812d;
+    overflow-y: auto;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.sidebar-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 30px 30px 30px;
+    margin-bottom: 30px;
+}
+
+.sidebar-title > span {
+    display: none;
+}
+
+.sidebar-brand {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 700;
+    color: #ffffff;
+}
+/* Custom CSS */
+.sidebar-list {
+    overflow-y: auto;
+}
+
+.custom-icon {
+    font-family: "Material Icons", sans-serif; /* Ensure Material Icons font family is applied */
+    font-size: 24px; /* Adjust size as needed */
+}
+
+.sidebar-list::-webkit-scrollbar {
+    display: none; /* Hide scrollbar for WebKit browsers (Chrome, Safari, etc.) */
+}
+
+.sidebar-list-item {
+    position: relative; /* Set position to relative */
+}
+/* Add hover effect to zoom in on the icons */
+.sidebar-list-item:hover .material-icons-outlined {
+    transform: scale(1.1); /* Adjust the scale factor as needed */
+}
+.sidebar-list-item:hover {
+    transform: scale(1.1); /* Adjust the scale factor as needed */
+}
+/* Add hover effect to show arrow icon */
+.sidebar-list-item:hover::after {
+    content: "\003E"; /* Unicode character for right-pointing triangle (▶) */
+    display: inline-block;
+    margin-left: 5px;
+    color: #00fe37;
+    font-weight: bold;
+    font-size: 1.3em;
+    position: absolute; /* Set position to absolute */
+    top: 50%; /* Align to the middle vertically */
+    transform: translateY(-50%); /* Adjust vertical alignment */
+}
+
+/* Add hover effect to zoom in on the sidebar elements */
+.sidebar-list-item:hover:not(:first-child) {
+    transform: scale(1.1); /* Adjust the scale factor as needed */
+}
+
+/* Add hover effect to show bold arrow icon */
+.sidebar-list-item:hover:not(:first-child)::after {
+    content: "\003E"; /* Unicode character for angle bracket (>) */
+    display: inline-block;
+    margin-left: 5px;
+    font-weight: bold; /* Make the arrow bold */
+}
+
+.sidebar-list {
+    padding: 0;
+    margin-top: 15px;
+    list-style-type: none;
+}
+
+.sidebar-list-item {
+    padding: 20px 20px 20px 20px;
+    font-size: 18px;
+}
+
+.sidebar-list-item:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+}
+
+.sidebar-list-item > a {
+    text-decoration: none;
+    color: #ffffff;
+}
+
+.sidebar-responsive {
+    display: inline !important;
+    position: absolute;
+    /*
+      the z-index of the ApexCharts is 11
+      we want the z-index of the sidebar higher so that
+      the charts are not showing over the sidebar 
+      on small screens
+    */
+    z-index: 12 !important;
+}
+
+/* ---------- MAIN ---------- */
+
+.main-container {
+    grid-area: main;
+    overflow-y: auto;
+    padding: 20px 20px;
+    color: rgba(1, 1, 1, 0.95);
+}
+
+.main-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.main-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 25px;
+    border-radius: 5px;
+}
+
+.card:first-child {
+    background-color: #f5f1f1;
+    color: #1c1919;
+}
+
+.card:nth-child(2) {
+    background-color: #ff6d00;
+    color: #fbfbfb;
+}
+
+.card:nth-child(3) {
+    background-color: #2e7d32;
+    color: #fbfbfb;
+}
+
+.card:nth-child(4) {
+    background-color: #d50000;
+    color: #fbfbfb;
+}
+
+.card-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+/* Styling for the heart icon */
+.card-inner #heart {
+    color: red; /* Set the heart color */
+}
+.heart-container {
+    width: 50px; /* Adjust as needed */
+    height: 50px; /* Adjust as needed */
+    border-radius: 50%; /* Make it circular */
+    background-image: radial-gradient(
+        circle,
+        rgba(255, 0, 0, 1) 0%,
+        rgba(255, 0, 0, 0) 50%
+    );
+    border: 2px solid red; /* Set the border color */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 10px; /* Adjust spacing between the heart icon and other content */
+}
+
+#heart {
+    color: red; /* Set the heart color */
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.heart-container {
+    animation: heartbeat 1s infinite; /* Apply heartbeat animation to the heart-container */
+}
+
+.card-inner > .material-icons-outlined {
+    font-size: 45px;
+}
+
+.charts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 60px;
+}
+
+.charts-card {
+    background-color: #5891e6;
+    margin-bottom: 20px;
+    padding: 25px;
+    box-sizing: border-box;
+    -webkit-column-break-inside: avoid;
+    border-radius: 5px;
+    box-shadow: 0 6px 7px -4px rgba(0, 0, 0, 0.2);
+}
+
+.chart-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Date And Time */
+/* CSS */
+.main-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.date-filter {
+    display: flex;
+    align-items: center;
+}
+
+.date-filter label {
+    margin-right: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+.date-filter input[type="date"] {
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+}
+
+.date-filter input[type="date"]:focus {
+    border-color: #2962ff;
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+
+/* Medium <= 992px */
+
+@media screen and (max-width: 992px) {
+    .grid-container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.2fr 3fr;
+        grid-template-areas:
+            "header"
+            "main";
+    }
+
+    #sidebar {
+        display: none;
+    }
+
+    .menu-icon {
+        display: inline;
+    }
+
+    .sidebar-title > span {
+        display: inline;
+    }
+}
+
+/* SOS Floating Button */
+/* SOS Floating Button */
+.sos-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+}
+
+.sos-button button {
+    background-color: #f44336; /* Red color */
+    color: white;
+    border: none;
+    border-radius: 1.4em;
+    width: auto; /* Adjusted to fit the text */
+    height: 60px; /* Fixed height */
+    padding: 0 20px; /* Add padding to the button */
+    font-size: 16px; /* Adjust font size */
+    cursor: pointer;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sos-button button:hover {
+    background-color: #d32f2f; /* Darker red color on hover */
+}
+
+/* Small <= 768px */
+
+@media screen and (max-width: 768px) {
+    .main-cards {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        margin-bottom: 0;
+    }
+
+    .charts {
+        grid-template-columns: 1fr;
+        margin-top: 30px;
+    }
+}
+
+/* Extra Small <= 576px */
+
+@media screen and (max-width: 576px) {
+    .hedaer-left {
+        display: none;
+    }
+}
